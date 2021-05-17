@@ -51,7 +51,6 @@ DROP TABLE teste;
 E o comando usado para excluir o banco de dados é:
 DROP DATABASE cadastro;
 
-===============================================
        (Comandos de alteração) 
 
 
@@ -102,8 +101,6 @@ WHERE qual linha referente ao id (não precisa de virgula)
 LIMIT limitar as alterações por linhas. Alterar 1 linha penas? 2?
 Não esqueça do ponto e virgula. 
 
-
-==============================================
        (Caracteristicas de cada tabela)
 
 
