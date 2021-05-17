@@ -1,0 +1,135 @@
+
+ Para abrirmos a pasta do MySQL no cmd:
+ cd \xampp\mysql\bin
+
+ Para abrirmos o comando MySQL pela console - localhost é o servidor:
+mysql.exe -h localhost -u root
+
+O comando para criar o banco de dados usamos:
+CREATE DATABASE nome do banco de dados;
+
+Para mostrarmos todos os bancos de dados usamos:
+SHOW DATABASES;
+
+Para abrirmos o banco de dados especifico:
+USE Cadastro;
+
+Para vermos o status desse banco:
+STATUS;
+
+Para vermos as Tabelas presentes nesse banco:
+SHOW TABLES;
+
+Criar uma tabela:
+CREATE TABLE pessoas;
+
+ou então 
+
+''Criar tabela'' que não dá erro
+	CREATE TABLE IF NOT EXIST cursos(
+	nome VARCHAR(30) NOT NULL UNIQUE,
+	descricao text,
+	carga int UNSIGNED,
+	totAulas int,
+	ano year DEFAULT '2021'
+	) DEFAULT CHARSET = utf8;
+
+*year = aceita valores de ano
+
+Para vermos as colunas e classificação dessa tabela:
+DESCRIBE pessoas;
+
+Para mostrarmos as informações presentes na tabela do banco:
+SELECT * FROM pessoas;
+
+Para mostrarmos as colunas especificas da tabela
+SELECT nome, salario FROM nome da tabela do banco;
+
+E o Comando usado para excluir a tabela por completo é:
+DROP TABLE teste;
+
+E o comando usado para excluir o banco de dados é:
+DROP DATABASE cadastro;
+
+===============================================
+       (Comandos de alteração) 
+
+
+Alterar um Default:
+ALTER TABLE nacionalidade SET DEFAULT 'Brasileira';
+
+Alterar o numero de caracteres:
+ALTER TABLE pessoas MODIFY COLUMN profissao VARCHAR(20);
+
+''diminuir''
+ALTER TABLE pessoas MODIFY COLUMN profissao VARCHAR(10);
+
+Alterar o nome da tabela:
+ALTER TABLE pessoas RENAME TO alunos;
+
+Adicionar coluna:
+ALTER TABLE pessoas ADD COLUMN codigo int FIRST;
+
+Adicionar coluna no meio de outras: 
+ALTER TABLE pessoas ADD COLUMN profissao varchar(10) AFTER nome;
+
+Incluir um id no começo da tabela
+ALTER TABLE cursos ADD COLUMN idCurso int FIRST;
+
+Torna-lo uma chave:
+ALTER TABLE cursos ADD KEY(idCurso);
+
+Adicionar valores a pasta e as suas colunas. É importante que faça na ordem correta.
+INSERT INTO cursos VALUES (
+[informações]
+);
+
+ Ordenar os dados a partir do id - ordem crescente:
+SELECT * FROM cursos ORDER BY idCurso;
+
+Ordenar os dados a partir do id - ordem decrescente:
+SELECT * FROM cursos ORDER BY idCurso DESC;
+
+Fazer a atualização dos seus dados:
+	UPDATE nome da tabela
+	SET nome = 'Java', carga = '40', ano = '2015'
+	WHERE idCurso = 5
+	LIMIT 1;
+
+UPDATE o nome da tabela
+SET setar as colunas e escrever a alteração, separadas por virgula
+WHERE qual linha referente ao id (não precisa de virgula)
+LIMIT limitar as alterações por linhas. Alterar 1 linha penas? 2?
+Não esqueça do ponto e virgula. 
+
+
+==============================================
+       (Caracteristicas de cada tabela)
+
+
+Termo técnico padronizado do sistema xampp ou CHARSET:
+DEFAULT CHARACTER SET utf8; 
+
+Obrigar o cliente a escrever algo nesta coluna
+NOT NULL
+
+É cadastrado automaticamente
+AUTO_INCREMENT
+
+Apenas dois valores são aceitos Ex: M ou F
+sexo e num ('M', 'F'),
+
+Total de casas 5, das 5 duas serão para casas decimais:
+Decimal (5,2),
+
+Apresenta a palavra Brasil, caso esse campo não seja preenchido:
+DEFAULT Brasil
+
+Valores unicos:
+NOT NULL UNIQUE
+
+Não aceita valores negativos:
+UNSIGNED
+
+Mistura de comandos:
+id int NOT NULL AUTO_INCREMENT,
